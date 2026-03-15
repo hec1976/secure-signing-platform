@@ -1,20 +1,26 @@
+
+# Python
 __pycache__/
 *.pyc
-*.db
-*.log
-*.sqlite
-logs/
-audit/
-.env
+*.pyo
+*.pyd
 
-# keys
+# Logs
+logs/
+*.log
+
+# Databases
+*.db
+*.sqlite
+
+# Keys
 *.key
 *.pem
 *.private
 
-# python
+# Virtual environments
 venv/
 .venv/
 
-# system
+# System files
 .DS_Store
