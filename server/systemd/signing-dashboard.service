@@ -1,0 +1,15 @@
+[Unit]
+Description=Signing Platform Monitoring Dashboard
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/signing-platform/server/monitoring
+Environment="SIGNING_AUDIT_DB=/opt/signing-platform/server/audit/central_logs.db"
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/signing-platform/server/venv/bin/gunicorn -b 0.0.0.0:5000 -w 4 dashboard:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

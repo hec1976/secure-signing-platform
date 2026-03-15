@@ -1,0 +1,40 @@
+service:
+  host: 0.0.0.0
+  port: 8000
+  key_algorithm: Ed25519
+  active_key_id: ed25519-2026-01
+  max_upload_bytes: 10485760
+  
+security:
+  allow_no_api_keys: false
+  allow_legacy_plaintext_keys: false
+  api_keys:
+    - "$2b$12$zOq/zsp9PMWU.Tv0jUh9yeAy9f6sfS2N1g5/KT.2iasECQHpzr5gi"
+    
+paths:
+  key_dir: ./keys
+  audit_log: ./audit/audit.log
+  central_audit_db: ./audit/central_logs.db
+  key_metadata: ./keys/keys.json
+
+tls:
+  enabled: true
+  auto_generate_self_signed: true
+  cert_file: ./tls/server.crt
+  key_file: ./tls/server.key
+  ca_file: null
+  require_client_cert: false
+  min_version: TLSv1_2
+  self_signed:
+    common_name: signing.local
+    country: CH
+    state: VS
+    locality: Visperterminen
+    organization: heclab
+    organizational_unit: NDS Sec
+    dns_names:
+      - localhost
+      - signing.local
+    ip_addresses:
+      - 127.0.0.1
+      - 192.168.20.220

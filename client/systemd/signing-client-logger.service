@@ -1,0 +1,30 @@
+[Unit]
+Description=Signing Platform Log Synchronization Daemon
+After=network.target
+Requires=network.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/signing-platform/client
+Environment=PYTHONUNBUFFERED=1
+Environment=SIGNING_CLIENT_ID=%H  # Hostname als Client-ID
+Environment=SIGNING_LOG_SYNC_INTERVAL=10  # Default-Sync-Intervall (kann in client.yaml überschrieben werden)
+# Pfade und API-Einstellungen werden aus client.yaml geladen (siehe Skript)
+ExecStart=/opt/signing-platform/client/venv/bin/python /opt/signing-platform/client/bin/log_client_daemon.py
+Restart=always
+RestartSec=2s
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=signing-log-sync
+
+# Security-Hardening
+PrivateTmp=true
+ProtectSystem=full
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+ReadWritePaths=/opt/signing-platform/client/logs /opt/signing-platform/client/config
+
+[Install]
+WantedBy=multi-user.target

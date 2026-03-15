@@ -1,0 +1,28 @@
+server:
+  base_url: https://127.0.0.1:8000
+  api_key: KEY-DEV-123
+
+paths:
+  public_key_dir: ./keys
+  active_public_key: ./keys/active_public.pem
+  key_metadata: ./keys/keys.json
+  local_log_db: /opt/signing-platform/client/logs/client_logs.db  
+
+policy:
+  allow_dirs:
+    - ./testfiles
+  require_sig_file: true
+  require_executable_bit: true
+  reject_crlf: true
+  require_no_symlink: true
+  
+logging:
+  level: INFO
+  
+tls:
+  verify: false
+  insecure_skip_verify: true
+  # ca_file: "./tls/ca.pem"
+  
+logging:
+  sync_interval_sec: 10

@@ -1,0 +1,15 @@
+[Unit]
+Description=Signing Platform Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/signing-platform/server
+Environment=SIGNING_SERVER_CONFIG=/opt/signing-platform/server/config/service.yaml
+ExecStart=/opt/signing-platform/server/venv/bin/python /opt/signing-platform/server/api/app.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
