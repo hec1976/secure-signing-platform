@@ -143,10 +143,17 @@ sudo apt install python3 python3-pip grafana prometheus
 # Schritt 1 -- Repository klonen
 
 ``` bash
-git clone https://github.com/username/secure-signing-platform.git
+git clone https://github.com/hec1976/secure-signing-platform.git
 cd secure-signing-platform
 ```
 
+Projekt nach /opt/signing-platform installieren:
+``` bash
+sudo mkdir -p /opt/signing-platform
+sudo cp -r secure-signing-platform/* /opt/signing-platform/
+cd /opt/signing-platform
+
+```
 ------------------------------------------------------------------------
 
 # Schritt 2 -- Python Abhängigkeiten installieren
